@@ -1,15 +1,48 @@
-# type_int = 1 # целые числа (int)
-# type_float = 1.23 # числа с точкой
-# type_str = "Строки пишутся в кавычках"
-# type_bool_one = True # булевы значения истина(правда)
-# type_bool_two = False # булевы значения ложь
+# type_int = 1 # целые числа (int) int()
+# type_float = 1.23 # числа с точкой float()
+# type_str = "Строки пишутся в кавычках" str()
+# type_bool_one = True # булевы значения истина(правда) bool()
+# type_bool_two = False # булевы значения ложь bool()
 # type_none = None
-user_name = "Denis"
-print(user_name*2)
-print(user_name*3)
-print(user_name*4)
-print(user_name*5)
-print(user_name*6)
-print(user_name*7)
-print(user_name*8)
-print(user_name*9)
+
+"""
+содержимое 
+
+"""
+
+# a = 123 #int
+# print(a * 2, type(a)) # int
+# a = str(a) # str
+# print(a * 2, type(a)) # str
+# a = float(a) #float
+# print(a * 2, type(a)) #float
+
+# b = "123"
+# print(b, type(b))
+# b = int(b)
+# print(b, type(b)) 
+# b = 2
+# #   876798
+
+
+# z = input("введите число - мы умножим его на 2: ") # input() - по умолчанию является строкой 
+# z = int(z) # ИЗ СТРОКИ СДЕЛАЛИ ЧИСЛО
+# print(z * 2)
+
+# print("Заполните информацию")
+# myName = input("Введите имя: ")
+
+# print("Информация о пользователе")
+# print("Имя:", myName)
+# myName = "Денис"
+# a  = "2"
+# a =1 int(a)
+# print(f"привет {a}")
+# x = int(input("введите число: "))
+
+# # нужно использовать // и %
+# print(x // 10)
+# print(x % 10)
+a = 2
+b = 3
+h = a / b * 10
