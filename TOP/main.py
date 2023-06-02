@@ -123,43 +123,126 @@
 
 # ----------------------------------------------------
 # Использование циклов внутри циклов, возрат значений , + условия
+# print("Регистрация персонажа")
+# reg = 0
+# while reg == 0:
+#     reg_gender = 0
+#     while reg_gender == 0:
+#         gender = input("Выберете пол персонажа\n1-муж\n2-жен\n: ")
+#         if gender == "1":
+#             gender = "Мужской"
+#             reg_gender=1
+#         elif gender == "2":
+#             gender = "Женский"
+#             reg_gender=1
+#         else:
+#             print("Ошибка: Выберете из перечисленного")
+#         if reg_gender == 1:
+#             reg_race = 0
+#             while reg_race == 0:
+#                 race = input("0<-назад Выберете рассу пресонажа\n1-Человек\n2-Эльф\n: ")
+#                 if race == "1":
+#                     race = "Человек"
+#                     reg_race = 1
+#                 elif race == "2":
+#                     race = "Эльф"
+#                     reg_race = 1
+#                 elif race == "0":
+#                     reg_gender = 0
+#                     break
+#                 else:
+#                     print("Ошибка: Выберете из перечисленного")
+#                 if reg_race == 1:
+#                     reg_role = 0
+#                     if race == "Человек":
+#                         while reg_role == 0:
+#                             role = input("0<-назад Выберете рассу пресонажа\n1-Воин\n2-Лучник\n: ")
+#                             if role == "1":
+#                                 reg_role == 1
+#                     elif race == "Эльф":
+#                         pass
+                    
+#     reg+=1
+
+# myName = "Denis"
+# v = 90
+# t = 1
+# s = v*t
+#                0           1 
+
+# print(genderList[0])
+#             0 1 2 3 4 5 6 7 8 9
+
+# numberList.sort()
+# print(len(numberList))
+
+
+# print(raceList, "Создали список")
+# raceList.append("Гном") 
+# print(raceList, "raceList.append(\"Гном\")")
+# raceList.pop(1)
+# print(raceList, "raceList.pop(1)")
+# raceList.clear()
+# print(raceList, "raceList.clear()")
+
+# numberList = [3,1,6,7,9,5,4,2,8,3]
+# print(numberList)
+# # for i in range (0,len(numberList)):
+
+#     # # numberList[i] = numberList[i]**2
+#     # if numberList[i] % 2 != 0:
+#     #     numberList.remove(i)
+# # print(numberList)
+
+# listN = [ 
+#             [1,2,3,4,5],
+#             [6,7,8,9,10],
+#         ]
+# for i in range(0,len(listN)):
+#     print(listN[i])
+#     for j in range(0,len(listN[i])):
+#         print([i],[j] , "=", listN[i][j])
+
+
+
+genderList = ["Мужской", "Женский"]
+raceList = ["Человек", "Эльф", "Гном", "Орк","Тролль"]
+roleList = ["Воин","Лучник","Маг"]
+print(raceList[2])
+textRace = ""
+for i in range ( 0 , len(raceList)):
+    textRace += f"{i} - {raceList[i]}\n"
+textRace += f"{len(raceList)} - назад\n"
 print("Регистрация персонажа")
-reg = 0
-while reg == 0:
-    reg_gender = 0
-    while reg_gender == 0:
+reg = False
+while reg == False:
+    reg_gender = False
+    while reg_gender == False:
         gender = input("Выберете пол персонажа\n1-муж\n2-жен\n: ")
         if gender == "1":
             gender = "Мужской"
-            reg_gender=1
+            reg_gender=True
         elif gender == "2":
             gender = "Женский"
-            reg_gender=1
+            reg_gender=True
         else:
-            print("Ошибка: Выберете из перечисленного")
-        if reg_gender == 1:
-            reg_race = 0
-            while reg_race == 0:
-                race = input("0<-назад Выберете рассу пресонажа\n1-Человек\n2-Эльф\n: ")
-                if race == "1":
-                    race = "Человек"
-                    reg_race = 1
-                elif race == "2":
-                    race = "Эльф"
-                    reg_race = 1
-                elif race == "0":
-                    reg_gender = 0
-                    break
+            print("Ошибка: Выберете из перечис ленного")
+        if reg_gender == True:
+            reg_race = False # созали галочку - (нет)
+            while reg_race == False: # выполнять пока False
+                # принимает только число
+                print(12)
+                myRace = int(input(f"Выберете расу:\n{textRace}"))
+                if myRace > len(raceList) or myRace < 0:
+                    print("Ошибка: выбери из перечисленного")
                 else:
-                    print("Ошибка: Выберете из перечисленного")
-                if reg_race == 1:
-                    reg_role = 0
-                    if race == "Человек":
-                        while reg_role == 0:
-                            role = input("0<-назад Выберете рассу пресонажа\n1-Воин\n2-Лучник\n: ")
-                            if role == "1":
-                                reg_role == 1
-                    elif race == "Эльф":
-                        pass
-                    
-    reg+=1
+                    for i in range ( 0 , len(raceList)):
+                        if myRace == i:
+                            race = raceList[i]
+                            reg_race = True
+                            print("вы выбрали",race)
+                            break
+                if myRace == len(raceList):
+                        reg_gender = False
+                        break
+    reg = True
