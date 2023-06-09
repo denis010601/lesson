@@ -318,52 +318,125 @@
 # ЗАДАЧА 
 
     
-print("Список гостей")
-guestsList = [] # список гостей
-reg = False
-# цикл для регистрации
-while reg == False:
-    # если гостей меньше 5 то предлагать завершить регистрацию нельзя
-    if len(guestsList) < 5:
-        choice = int(input("1-добавить гостя\n2-Удалить гостя\n3-просмотр гостей"))
-    else:
-        choice = int(input("1-добавить гостя\n2-Удалить гостя\n3-просмотр гостей\n4- закончить вести список гостей"))
-    # если пользователь выберает 1, то идет проверка на количество гостей
-    # добавить гостя можно только если гостей не больше 10
-    if choice == 1:
-        if len(guestsList) < 10:
-            nameGuest = str(input("введите имя гостя: "))
-            guestsList.append(nameGuest)
-        else:
-            print("Список переполнен: кол-во гостей не может превышать более 10")
-    # Если пользователь выбрал 2, то он может удалить гостя, только если есть хотя бы один гость
-    elif choice == 2:
-        if len(guestsList) > 0:
-            textGuest = ""
-            # Цикл просмотра гостей  
-            for i in range(0,len(guestsList)):
-                textGuest += f"{i} - {guestsList[i]}"
-            # цикл для проверки гостей т.к мы можем удалить только гостя который есть в списке 
-            print(textGuest)
-            nameGuest = str(input("введите имя гостя: "))
-            for i in range(0,len(guestsList)):
-                if nameGuest == guestsList[i]:
-                    guestsList.remove(nameGuest)
-                    break
-        else:
-            print("вы не можете удалить гостей, список пуст")
-    elif choice == 3:
-        if len(guestsList) > 0:
-            textGuest = ""
-            # Цикл просмотра гостей  
-            for i in range(0,len(guestsList)):
-                textGuest += f"{i} - {guestsList[i]}"
-            # цикл для проверки гостей т.к мы можем удалить только гостя который есть в списке 
-            print(textGuest)
-        else:
-            print("список гостей пуст")
-    elif choice == 4:
-        if len(guestsList) > 5 or len(guestsList) < 10:
-            break
-            
+# print("Список гостей")
+# guestsList = [] # список гостей
+# reg = False
+# # цикл для регистрации
+# while reg == False:
+#     # если гостей меньше 5 то предлагать завершить регистрацию нельзя
+#     if len(guestsList) < 5:
+#         choice = int(input("1-добавить гостя\n2-Удалить гостя\n3-просмотр гостей"))
+#     else:
+#         choice = int(input("1-добавить гостя\n2-Удалить гостя\n3-просмотр гостей\n4- закончить вести список гостей"))
+#     # если пользователь выберает 1, то идет проверка на количество гостей
+#     # добавить гостя можно только если гостей не больше 10
+#     if choice == 1:
+#         if len(guestsList) < 10:
+#             nameGuest = str(input("введите имя гостя: "))
+#             guestsList.append(nameGuest)
+#         else:
+#             print("Список переполнен: кол-во гостей не может превышать более 10")
+#     # Если пользователь выбрал 2, то он может удалить гостя, только если есть хотя бы один гость
+#     elif choice == 2:
+#         if len(guestsList) > 0:
+#             textGuest = ""
+#             # Цикл просмотра гостей  
+#             for i in range(0,len(guestsList)):
+#                 textGuest += f"{i} - {guestsList[i]}"
+#             # цикл для проверки гостей т.к мы можем удалить только гостя который есть в списке 
+#             print(textGuest)
+#             nameGuest = str(input("введите имя гостя: "))
+#             for i in range(0,len(guestsList)):
+#                 if nameGuest == guestsList[i]:
+#                     guestsList.remove(nameGuest)
+#                     break
+#         else:
+#             print("вы не можете удалить гостей, список пуст")
+#     elif choice == 3:
+#         if len(guestsList) > 0:
+#             textGuest = ""
+#             # Цикл просмотра гостей  
+#             for i in range(0,len(guestsList)):
+#                 textGuest += f"{i} - {guestsList[i]}"
+#             # цикл для проверки гостей т.к мы можем удалить только гостя который есть в списке 
+#             print(textGuest)
+#         else:
+#             print("список гостей пуст")
+#     elif choice == 4:
+#         if len(guestsList) > 5 or len(guestsList) < 10:
+#             break
+#                0       1
+# productList = ["Каша", "Вода",]
+# print(productList[0])
+# infoProduct = {
+#     "nameProduct" : "Каша",
+#     "price" : 120,
+#     "sale" : 0.2,
+# }
+# print(f"{infoProduct['price']}\n{infoProduct['sale']}")
+# myName = input("введи свое имя")
+# myAge = int(input("сколько вам лет?"))
+# infoPerson = {
+#     "namePerson" : "Денис",
+#     "agePerson" : 22,
+#     "hobbyPerson" : ["Sport", "Programming"]
+# }
+# print(infoPerson)
+
+# for key in infoPerson:
+#     print(f"{key} - {infoPerson[key]}")
+
+# print(f"Имя: {infoPerson['namePerson']}")
+
+# productList = [
+#     # 0
+#     {
+#         "nameProduct" : "Хлеб",
+#         "price" : 55,
+#         "count" : 37,
+#         "category" : "Хлебобулочное" ,
+#     },
+#     # 1
+#     {
+#         "nameProduct" : "Молоко",
+#         "price" : 101,
+#         "count" : 20,
+#         "category" : "Молочная",
+#     },
+#     {
+#         "nameProduct" : "Кефир",
+#         "price" : 99,
+#         "count" : 6,
+#         "category" : "Молочная",
+#     },
+# ]
+# for i in range(0,len(productList)):
+#     if productList[i]["category"] == "Молочная":
+#         productList[i]["price"] = productList[i]["price"] * 2
+#         print(f"Название товара - {productList[i]['nameProduct']}")
+#         print(f"Цена - {productList[i]['price']}")
+#         print(f"Кол-во - {productList[i]['count']}")
+#         print("--------------------------")
+
+
+guestList = []
+while True:
+    nameGuest = input("Введите имя гостя : ")
+    ageGuest = int(input("Введите возраст гостя: "))
+    # выше созданные переменные будут добавляться в объект infoGuest
+    # и вставляться в соответствующие ключи
+    # infoGuest - хранит данные гостя
+    infoGuest = {
+        "nameGuest" : nameGuest,
+        "ageGuest" : ageGuest,
+    }
+    # print(infoGuest)
+    guestList.append(infoGuest)
+    if len(guestList) > 3:
+        break
+
+for i in range (0,len(guestList)):
+    print(f"Имя гостя - {guestList[i]['nameGuest']}")
+    print(f"Возраст гостя - {guestList[i]['ageGuest']}")
+    print("------------------")
 
