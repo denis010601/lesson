@@ -347,6 +347,7 @@
 #             print(textGuest)
 #             nameGuest = str(input("введите имя гостя: "))
 #             for i in range(0,len(guestsList)):
+#                 print(i)
 #                 if nameGuest == guestsList[i]:
 #                     guestsList.remove(nameGuest)
 #                     break
@@ -419,24 +420,147 @@
 #         print("--------------------------")
 
 
-guestList = []
-while True:
-    nameGuest = input("Введите имя гостя : ")
-    ageGuest = int(input("Введите возраст гостя: "))
-    # выше созданные переменные будут добавляться в объект infoGuest
-    # и вставляться в соответствующие ключи
-    # infoGuest - хранит данные гостя
-    infoGuest = {
-        "nameGuest" : nameGuest,
-        "ageGuest" : ageGuest,
-    }
-    # print(infoGuest)
-    guestList.append(infoGuest)
-    if len(guestList) > 3:
-        break
+# guestList = []
+# while True:
+#     nameGuest = input("Введите имя гостя : ")
+#     ageGuest = int(input("Введите возраст гостя: "))
+#     # выше созданные переменные будут добавляться в объект infoGuest
+#     # и вставляться в соответствующие ключи
+#     # infoGuest - хранит данные гостя
+#     infoGuest = {
+#         "nameGuest" : nameGuest,
+#         "ageGuest" : ageGuest,
+#     }
+#     # print(infoGuest)
+#     guestList.append(infoGuest)
+#     if len(guestList) > 3:
+#         break
 
-for i in range (0,len(guestList)):
-    print(f"Имя гостя - {guestList[i]['nameGuest']}")
-    print(f"Возраст гостя - {guestList[i]['ageGuest']}")
-    print("------------------")
+# for i in range (0,len(guestList)):
+#     print(f"Имя гостя - {guestList[i]['nameGuest']}")
+#     print(f"Возраст гостя - {guestList[i]['ageGuest']}")
+#     print("------------------")
 
+# myList = [1,2,3,5,6]
+# for i in range(0, len(myList)):
+#     if i == 4:
+#         myList.pop(i)
+
+# def reg(x):
+#     print(x)
+
+# reg(input("Введите свое имя: ")) #x=input("Введите свое имя: ")
+# b = 5
+
+# def f1(a):
+#     pi = 3.14
+#     print(a*pi*b)
+# f1(10)
+
+
+
+
+# a = 10
+# c = a * 20
+# print(a * 10)
+# print(a)
+# print(c)
+
+# def f1(a):
+#     c = a - 50
+#     return c
+
+
+
+# asd = f1(200)
+# print(asd)
+# # f1(200) = 150
+# print(f"Вы получили на руки {f1(200)}")
+
+# def regName(name):
+#     return name
+    
+    
+# def regGender():
+#     listGender = ["муж","жен"]
+#     textGender = ""
+#     for i in range(0,len(listGender)):
+#         textGender += f"{i} - {listGender[i]}\n"
+#     myGender = int(input(f"{textGender}"))
+#     for i in range(0,len(listGender)):
+#         if myGender == i:
+#             return listGender[i]
+#     globalReg()
+
+# def globalReg():
+#     x = int(input("1 - ввод имени\n2-выбор пола"))
+#     if x == 1:
+#        myName = regName(input("ваше имя: "))
+#        globalReg()
+#     elif x == 2:
+#        myGender = regGender()
+#        globalReg()
+#     return([myName,myGender])  
+
+
+# print(globalReg())
+
+
+        #   myInfo
+# def regName(massiv):
+#     print("в функцию 1 пришло значение",massiv)
+# # newName = input("Ваше имя")
+# #   myInfo["myName"] = newName
+#     massiv["myName"] = input("Ваше имя")
+#     print("Из функции 1 отправили ",massiv)
+#     return massiv
+
+# def regGender(massiv):
+#     print("в функцию 2 пришло значение",massiv)
+#     x = int(input("1-м\n2-ж\n"))
+#     if x == 1:
+#         massiv["myGender"] = "м"
+#     elif x == 2:
+#         massiv["myGender"] = "ж"
+#     print("Из функции 2 отправили ",massiv)
+#     return massiv
+
+# def globalReg(massiv):
+#     # massiv = myInfo
+#     x = int(input("1-ввод имени\n2-выбор пола\n"))
+#     if x == 1:
+#         myName = regName(massiv)
+#         globalReg(myName)
+#     elif x == 2:    
+#         myGender = regGender(massiv)
+#         globalReg(myGender)
+#     return massiv
+
+# myInfo = {
+
+# }
+
+# print(myInfo)
+
+# newInfo = globalReg(myInfo)
+# print(newInfo)
+
+# Написать функцию для 
+
+numberList = [1,2,3,4,5,6,7,8,9,22,11,10,6,5,22]
+# for i in range(0,len(numberList)):
+#     if numberList[i] % 2 == 0 :
+#         numberList.pop(i)
+
+def delNumber(massiv):
+    print("вошел", massiv, "кол-во",len(massiv) )
+    for i in range(0,len(massiv)):
+        if i == len(massiv):
+            return massiv
+        
+        elif massiv[i] % 2 == 0 :
+            massiv.pop(i)
+            print("вышел", massiv)
+            delNumber(massiv)   
+
+delNumber(numberList)
