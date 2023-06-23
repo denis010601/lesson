@@ -598,11 +598,11 @@ def x(massiv):
     listMenu = [
         {
             "nameFunc" : "Регистрация нового пользователья",
-            "startFunc" : menu(massiv)
+            "startFunc" : menu
         },
         {
             "nameFunc" : "Вход в ЛК",
-            "startFunc" : newMenu(massiv)
+            "startFunc" : newMenu
         }
     ]
     text = ""
@@ -612,7 +612,7 @@ def x(massiv):
     m = int(input("Введите"))    
     for i in range(0,len(listMenu)):
         if m == i:
-            listMenu[i]["startFunc"]
+            listMenu[i]["startFunc"](massiv)
     x(massiv)
 
 
