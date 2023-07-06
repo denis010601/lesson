@@ -1,239 +1,135 @@
+base_list = [
+    {
+        "first_name" : "Денис",
+        "last_name" : "Кириллов",
+        "birthday" : "01.06.2001",
+        "gender" : "Мужской",
+        "login" : "denis161",
+        "password" : "12345"
+    },
+    {
+        "first_name" : "Кирилл",
+        "last_name" : "Кириллов",
+        "birthday" : "17.08.2006",
+        "gender" : "Мужской",
+        "login" : "kirillooo",
+        "password" : "12345"
+    },
+    {
+        "first_name" : "Максим",
+        "last_name" : "Максимов",
+        "birthday" : "11.04.2000",
+        "gender" : "Мужской",
+        "login" : "maks07",
+        "password" : "12345"
+    },
+    {
+        "first_name" : "Руслан",
+        "last_name" : "Русланов",
+        "birthday" : "11.02.2000",
+        "gender" : "Мужской",
+        "login" : "russlan",
+        "password" : "12345"
+    },
+    {
+        "first_name" : "Екатерина",
+        "last_name" : "Исаева",
+        "birthday" : "25.10.2000",
+        "gender" : "Женский",
+        "login" : "ekaterina25e",
+        "password" : "12345"
+    },
+]
+registered_users = [
 
+]
+class User():
+    def __init__(self,user_id,first_name, last_name, birthday , gender, login, password) :
+       self.user_id = user_id
+       self.first_name = first_name
+       self.last_name = last_name
+       self.birthday = birthday
+       self.gender = gender
+       self.login = login
+       self.password = password
+       #-----------------------
+       self.status = "user"
+       self.blocking = False
 
-#  Двигатель и его функции
-# def start():
-#     print("Запуск") 
+    # Если в классе есть методы с словом update, значит этот метод для изменения информации
+    def update_first_name(self, new_first_name):
+        self.first_name = new_first_name
+    def update_last_name(self, new_last_name):
+        self.last_name = new_last_name
+    def update_birthday(self, new_birthday):
+        self.birthday = new_birthday
+    def update_gender(self, new_gender):
+        self.gender = new_gender
+    def update_password(self, new_password):
+        if self.password == input("Введите старый пароль: "):
+            self.password = new_password
 
-# def stop():
-#     print("Стоп")
+class Moderator(User):
+    def __init__(self, user_id, first_name, last_name, birthday, gender, login, password):
+        super().__init__(user_id, first_name, last_name, birthday, gender, login, password)
+        self.status = "moderator"
+    # блокировка пользователей
+    def blocking_user(self, users_list):
+        text_user_list = f"id | first_name | blocking | status \n"
+        for i in range(0,len(users_list)):
+            text_user_list += f"{users_list[i].user_id}  {users_list[i].first_name}  {users_list[i].blocking} {users_list[i].status}\n"
+        print(text_user_list)
+        input_user_id = int(input("Введите id пользователя для блокировки"))
+        for i in range(0,len(users_list)):
+            if self.status == "moderator":
+                if input_user_id == i and users_list[i]['status'] != "moderator" and users_list[i]['status'] != "admin":
+                    if users_list[i]['blocking'] == True:
+                        print("пользователь уже заблокирован")
+                        break
+                    else:
+                        users_list[i]['blocking'] = True
+                        print("пользователь успешно заблокирован")
+                        break
+            elif self.status == "admin":
+                if input_user_id == i:
+                    if users_list[i]['blocking'] == True:
+                        print("пользователь уже заблокирован")
+                        break
+                    else:
+                        users_list[i]['blocking'] = True
+                        print("пользователь успешно заблокирован")
+                        break
 
-# Engine = {
-#     "start" : start,
-#     "stop" : stop,
-# }
+class Admin(Moderator):
+    def __init__(self, user_id, first_name, last_name, birthday, gender, login, password):
+        super().__init__(user_id, first_name, last_name, birthday, gender, login, password)
+        self.status = "admin"
+    def delete_user_list(self, users_list):
+        users_list.clear()
+        print("База данных пуста")
+                                # massiv - массиом данных
+    def create_user_list(self, massiv, users_list):
+        for i in range(0,len(massiv)):
+            users_list.append(User(user_id=i, 
+                                first_name=massiv[i]["first_name"],
+                                last_name=massiv[i]["last_name"],
+                                birthday=massiv[i]["birthday"],
+                                gender=massiv[i]["gender"],
+                                login=massiv[i]["login"],
+                                password=massiv[i]["password"]))
 
-# # Engine["start"]()
-# # Engine["stop"]()
-# def open():
-#     print("Капот открыт")
+myAdmin = Admin(10,"admin","admin","01.01.1970","Мужской","admin","admin")
+myAdmin.create_user_list(base_list,registered_users)
+myAdmin.blocking_user(registered_users)
+#   {
+#         "first_name" : "Денис",
+#         "last_name" : "Кириллов",
+#         "birthday" : "01.06.2001",
+#         "gender" : "Мужской",
+#         "login" : "denis161",
+#         "password" : "12345"
+#     },
 
-# def close():
-#     print("Капот закрыт")
+# myAdmin = User(10,"admin","admin","01.01.1970","Мужской","admin","admin")
 
-# Bonnet = {
-#     "open" : open,
-#     "close" : close,
-# }
-# # Основа авто
-# Car = {
-#     "color" : "",
-#     "marka" : "",
-#     "Engine" : "",
-#     "Bonnet" : ""
-# }
-
-# auto = Car
-# auto["marka"] = "audi"
-# auto["color"] = "green"
-# auto["Engine"] = Engine
-# print(auto)
-# auto["Engine"]["start"]()
-
-# # Основная функция
-# def Car(marka,color):
-#     thisMarka = marka
-#     thisColor = color
-
-#     activeList = {
-#         "showMarka" : showMarka
-#     }
-
-# def showMarka(param):
-#     print(param)
-     
-# Двигатель
-
-
-# auto = Car("audi","green")
-
-# import copy
-# Mash = {
-#     "color" : "",
-#     "marka" : ""
-# }
-
-# # Car = copy.deepcopy(Mash)
-# Car["Engine"] = Engine
-# Car["Doors"] = "двери"
-
-# myAuto = copy.deepcopy(Car)
-# myAuto["color"] = "Синий"
-
-# Ster = copy.deepcopy(Mash)
-
-# Ster["Engine"] = Engine
-# Ster["Baraban"] = "Барабан"
-# mySter = copy.deepcopy(Ster)
-# mySter["color"] = "Белый"
-
-# print("Основа техники",Mash)
-# print("----------")
-# print("Основа техники --> В шаблон авто",Car)
-# print("----------")
-# print("Шаблон авто --> мой авто",myAuto)
-# print("----------")
-# print("Основа техники --> В шаблон стиральная машина",Ster)
-# print("----------")
-# print("шаблон стиральная машина --> в мою стиральную маину",mySter)
-
-# # ------------------------------------
-# import copy
-# # Создание персонажа
-# def attack(param):
-#     return param
-
-
-# Person = {
-#     "name" : "Варвар",
-#     "gender" : "Мужской",
-#     "actions" : {
-#         "attack" : attack
-#     }
-# }
-
-# # Создание расы на основе объекта Person
-# Human = copy.deepcopy(Person)
-# Human["race"] = "Человек"
-# Human["skills"] = ["Быстрый бег", "Красноречие"]
-
-# Orc = copy.deepcopy(Person)
-# Orc["race"] = "Орк"
-# Orc["skills"] = ["Сила", "Быстрый бег"]
-
-# # Создание ролей на основе race
-
-
-# Warrior = copy.deepcopy(Orc) or copy.deepcopy(Human)
-# Warrior["role"] = "Воин"
-# Warrior["desc"] = "Воин отличается своим сочетанием мобильности, живучести, способности наносить урон и прерывать противника."
-# Warrior["actions"]["attack"]("Удар")
-
-# Archer = copy.deepcopy(Human) 
-# Archer["role"] = "Лучник"
-# Archer["desc"] = "Лучники способны избегать все эффекты контроля (кроме Эриолы) и получать меньше входящего урона, что позволяет им дольше жить и беспрепятственно вносить ДПС"
-# Archer["actions"]["attack"]("стрельба")
-
-# Shaman = copy.deepcopy(Orc)
-# Shaman["role"] = "Шаман"
-# Shaman["desc"] = "Шаманы — наставники в духовных практиках, идущих не от богов, а от самих природных стихий. "
-# Shaman["attaka"] = "Закленание"
-# Shaman["actions"]["attack"] = attack(Shaman["attaka"])
-
-# # print("----------")
-# # print(Person)
-# # print("----------")
-# # print(Human)
-# # print("----------")
-# # print(Orc)
-# # print("----------")
-# # print(Archer)
-# # print("----------")
-# # print(Warrior)
-# # print("----------")
-# # print(Shaman)
-# # print("----------")
-
-# myPerson = copy.deepcopy(Shaman)
-# print(myPerson)
-# print(myPerson["actions"]["attack"])
-
-# # Frog = {
-# #     "gender": "Мужской",
-# #     "name" : "СуперЛяг",
-# #     "color" : "Синий"
-# # }
-
-
-# Archer = copy.deepcopy(Frog) 
-# Archer["role"] = "Лучник"
-# Archer["desc"] = "Лучники способны избегать все эффекты контроля (кроме Эриолы) и получать меньше входящего урона, что позволяет им дольше жить и беспрепятственно вносить ДПС"
-# Archer["skills"] = "Двойное сальто"
-
-
-class Car:
-    def __init__(self, color, marka, engine): # создание переменных дня класса (объекта)
-        self.color = color
-        self.marka = marka
-        self.engine = engine
-    # методы - действия с определенным классом
-    def showColor(self):
-        print(self.color)
-
-    def showMarka(self):
-        print(self.marka)
-
-    def showHP(self):
-        print("Наследуется")
-
-class Engine:
-    def __init__(self, HP, volume):
-        self.HP = HP
-        self.volume = volume
-
-    def start(self):
-        print("Запуск")
-
-    def stop(self):
-        print("Стоп")
-
-    
-
-
-myEngine = Engine(120, 2)
-twoEngine = Engine(280, 2.2) 
-myAuto = Car("green","audi",myEngine)
-
-print(myAuto.engine.volume)
-
-
-# Наследование
-
-class SportCar(Car):
-    def __init__(self, color, marka, engine, abs):
-        # self.color = color
-        # self.marka = marka
-        # self.engine = engine
-        self.abs = abs
-        super().__init__(color, marka, engine)
-
-
-lambarginiEngine = Engine(900, 6)
-twoAuto = SportCar("blue","lamborgini", lambarginiEngine, True)
-
-twoAuto.showHP()
-
-
-class Animal:
-    def __init__(self, name , sound):
-        self.name = name
-        self.sound = sound
-    
-    def activeSound(self):
-        print(self.sound)
-
-class Cat(Animal):
-    def __init__(self, name):
-        super().__init__(name, "Мяу")
-
-    def purr(self):
-        print("Мурлыкает")
-
-class Dog(Animal):
-    def __init__(self, name):
-        super().__init__(name, "Гав")
-
-    def digHole(self):
-        print("Копает яму")
-
-myCat = Cat("Вася")
-myCat.activeSound()
+# print(myAdmin["user_id"])
