@@ -5,6 +5,7 @@ app_name = 'blog'
 # Create your views here.
 def blogView(request):
     articles = Article.objects.all() # отвечает за хранение подключенной базы
+    print(articles[0].desc)
     return render(request, template_name='blog/blog.html', context={'articles':articles})
 
 def detail(request, article_id):
